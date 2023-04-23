@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <stdio.h>
 
 // #define the macros below to 1/0 to enable/disable the mode of operation.
 //
@@ -54,6 +55,11 @@ void AES_init_ctx(struct AES_ctx* ctx, const uint8_t* key);
 void AES_init_ctx_iv(struct AES_ctx* ctx, const uint8_t* key, const uint8_t* iv);
 void AES_ctx_set_iv(struct AES_ctx* ctx, const uint8_t* iv);
 #endif
+
+// for sim
+typedef uint8_t state_t[4][4];
+void display(uint8_t* c);
+void MixColumns(state_t* state);
 
 #if defined(ECB) && (ECB == 1)
 // buffer size is exactly AES_BLOCKLEN bytes; 

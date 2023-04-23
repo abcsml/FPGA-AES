@@ -60,7 +60,7 @@ NOTE:   String length must be evenly divisible by 16byte (str_len % 16 == 0)
 /* Private variables:                                                        */
 /*****************************************************************************/
 // state - array holding the intermediate results during decryption.
-typedef uint8_t state_t[4][4];
+//typedef uint8_t state_t[4][4];
 
 
 
@@ -288,7 +288,7 @@ static uint8_t xtime(uint8_t x)
 }
 
 // MixColumns function mixes the columns of the state matrix
-static void MixColumns(state_t* state)
+void MixColumns(state_t* state)
 {
   uint8_t i;
   uint8_t Tmp, Tm, t;
