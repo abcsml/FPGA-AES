@@ -1,13 +1,22 @@
 module aes_sbox (
-    input      [ 7:0] num [19:0],   // sub bytes 16 + G function 4 = 20
-    output reg [ 7:0] val [19:0]
+    input      [ 7:0] state     [15:0],
+    output reg [ 7:0] state_val [15:0],
+    // for round key
+    input      [ 7:0] key       [ 3:0],
+    output reg [ 7:0] key_val   [ 3:0]
 );
 
 wire [ 7:0] sbox [0:255];
 
 always @(*) begin
     for (int i = 0; i < 16; i++) begin
-        val[i] = sbox[num[i]];
+        state_val[i] = sbox[state[i]];
+    end
+end
+
+always @(*) begin
+    for (int i = 0; i < 4; i++) begin
+        key_val[i] = sbox[key[i]];
     end
 end
 

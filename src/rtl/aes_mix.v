@@ -1,4 +1,4 @@
-module aes_mix_columns (
+module aes_mix (
     input      [ 7:0] state [15:0],
     output reg [ 7:0] val   [15:0]
 );
@@ -23,14 +23,14 @@ reg [ 7:0] a,b,c,d;
 
 always @(*) begin
     for (int i = 0; i < 4; i++) begin
-        a = state[i*4];
-        b = state[i*4+1];
-        c = state[i*4+2];
-        d = state[i*4+3];
-        val[i*4]   = aes_mul('h2, a) ^ aes_mul('h3, b) ^ aes_mul('h1, c) ^ aes_mul('h1, d);
-        val[i*4+1] = aes_mul('h1, a) ^ aes_mul('h2, b) ^ aes_mul('h3, c) ^ aes_mul('h1, d);
-        val[i*4+2] = aes_mul('h1, a) ^ aes_mul('h1, b) ^ aes_mul('h2, c) ^ aes_mul('h3, d);
-        val[i*4+3] = aes_mul('h3, a) ^ aes_mul('h1, b) ^ aes_mul('h1, c) ^ aes_mul('h2, d);
+        a = state[15-i*4];
+        b = state[14-i*4];
+        c = state[13-i*4];
+        d = state[12-i*4];
+        val[15-i*4] = aes_mul('h2, a) ^ aes_mul('h3, b) ^ aes_mul('h1, c) ^ aes_mul('h1, d);
+        val[14-i*4] = aes_mul('h1, a) ^ aes_mul('h2, b) ^ aes_mul('h3, c) ^ aes_mul('h1, d);
+        val[13-i*4] = aes_mul('h1, a) ^ aes_mul('h1, b) ^ aes_mul('h2, c) ^ aes_mul('h3, d);
+        val[12-i*4] = aes_mul('h3, a) ^ aes_mul('h1, b) ^ aes_mul('h1, c) ^ aes_mul('h2, d);
     end
 end
 
