@@ -9,8 +9,9 @@ $(shell mkdir -p $(BUILD_DIR)/obj_dir)
 CPP_PATH = $(abspath src/sim/csrc)
 INC_PATH = $(abspath src/sim/csrc/include)
 
-VSRCS = $(shell find $(abspath src/rtl) -name "*.v")
-CSRCS = $(shell find $(CPP_PATH) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
+VSRCS 	 = $(shell find $(abspath src/rtl) -name "*.v")
+TB_VSRCS = $(shell find $(abspath src/sim) -name "*.v" -or -name "*.txt")
+CSRCS  	 = $(shell find $(CPP_PATH) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
 clean:
 	-rm -rf $(BUILD_DIR)
