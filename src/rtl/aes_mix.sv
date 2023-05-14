@@ -22,7 +22,7 @@ endfunction
 reg [ 7:0] a,b,c,d;
 
 always @(*) begin
-    for (int i = 0; i < 4; i++) begin
+    for (int i = 0; i < 4; i=i+1) begin
         a = state[15-i*4];
         b = state[14-i*4];
         c = state[13-i*4];

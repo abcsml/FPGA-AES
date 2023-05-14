@@ -53,3 +53,19 @@ AES主要有四种操作，轮密钥加（aes_add）,字节代换（aes_sbox）�
 | round       | internal | 表示当前为第几轮               |
 | w0,w1,w2,w3 | internal | 扩展密钥数组                   |
 | round_key   | output   | 轮密钥输出                     |
+
+## TOP
+
+![](https://svg.wavedrom.com/github/abcsml/FPGA-AES/master/doc/wave/aes_wave.json)
+
+| 信号   | 方向   | 描述                                                               |
+| ------ | ------ | ------------------------------------------------------------------ |
+| sclk   | input  | 系统时钟                                                           |
+| tvalid | input  | AXI-stream valid信号                                               |
+| tlast  | input  | AXI-stream last信号                                                |
+| tready | output | AXI-stream ready信号                                               |
+| tid    | input  | AXI-stream id                                                      |
+| tdata  | input  | AXI-stream 数据输入，需要两拍，第一拍传明文，第二拍传密钥（128位） |
+| ovalid | output | 输出数据有效信号                                                   |
+| oid    | output | 输出数据对应id                                                     |
+| odata  | output | 输出数据                                                           |

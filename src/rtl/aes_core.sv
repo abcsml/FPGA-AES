@@ -75,7 +75,7 @@ always @(posedge sclk or negedge srst_n) begin
         round <= round + 1;
 end
 
-always @(posedge sclk or negedge srst_n) begin
+always @(posedge sclk) begin
     if (en)
         state <= text;
     else if (round != 0)

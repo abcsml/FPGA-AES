@@ -9,13 +9,13 @@ module aes_sbox (
 wire [ 7:0] sbox [0:255];
 
 always @(*) begin
-    for (int i = 0; i < 16; i++) begin
+    for (int i = 0; i < 16; i=i+1) begin
         state_val[i] = sbox[state[i]];
     end
 end
 
 always @(*) begin
-    for (int i = 0; i < 4; i++) begin
+    for (int i = 0; i < 4; i=i+1) begin
         key_val[i] = sbox[key[i]];
     end
 end

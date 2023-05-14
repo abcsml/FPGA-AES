@@ -1,0 +1,14 @@
+{ signal: [
+  { name: "sclk",   wave: "p....|....." },
+  { name: "tvalid", wave: "01.0.|....."},
+  { name: "tlast",  wave: "0.10.|....."},
+  { name: "tready", wave: "1..0.|...1."},
+  { name: "tid",    wave: "x3.x.|.....",data:"32'd1"},
+  { name: "tdata",  wave: "x44x.|.....",data:"text key"},
+  { name: "ovalid", wave: "0....|..10."},
+  { name: "oid",    wave: "x....|..3x.",data:"32'd1"},
+  { name: "odata",  wave: "x....|..4x.",data:"val"},
+  {},
+  { name: "aes_core_en", wave: "0.10.|....."},
+//   { name: "round",  wave: "2..22|22222", data: "0 1 ... 10 11 0"},
+]}

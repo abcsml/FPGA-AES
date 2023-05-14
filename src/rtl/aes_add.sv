@@ -5,7 +5,7 @@ module aes_add (
 );
 
 always @(*) begin
-    for (int i = 0; i < 16; i++) begin
+    for (int i = 0; i < 16; i=i+1) begin
         val[i] = state[i] ^ round_key[i];
     end
 end
