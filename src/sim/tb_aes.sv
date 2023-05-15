@@ -2,7 +2,7 @@
 
 module tb_aes;
 
-reg         sclk;
+reg         sclk=1'b0;
 reg         srst_n;
 
 reg  [ 7:0] aes_text [15:0];
@@ -36,24 +36,23 @@ initial begin
 end
 
 initial begin
-    sclk    = 1;
-    srst_n  = 0;
+    srst_n  <= 0;
     // init
-    tvalid  = 0;
-    tlast   = 0;
-    tid     = 0;
-    #100
-    srst_n  = 1;
-    #20
+    tvalid  <= 0;
+    tlast   <= 0;
+    tid     <= 0;
+    repeat(4) @(posedge sclk);
+    srst_n  <= 1;
+    @(posedge sclk);
     // input
-    tvalid  = 1;
-    tid     = 1;
-    #10
-    tlast   = 1;
-    #10
-    tvalid  = 0;
-    tlast   = 0;
-    #10000
+    tvalid  <= 1;
+    tid     <= 1;
+    @(posedge sclk);
+    tlast   <= 1;
+    @(posedge sclk);
+    tvalid  <= 0;
+    tlast   <= 0;
+    #1000
     $finish();
 end
 
@@ -66,7 +65,7 @@ initial $readmemh("aes_keys.mem", aes_key);
  *****************************************
  */
 
-always  #5 sclk <= ~ sclk;
+always  #5 sclk = ~ sclk;
 
 assign aes_data = tlast ? aes_key : aes_text;
 
