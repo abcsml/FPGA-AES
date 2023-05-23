@@ -55,7 +55,7 @@ generate
 endgenerate
 
 // main
-always @(posedge sclk or negedge srst_n) begin
+always @(posedge clk_out or negedge srst_n) begin
     if (!srst_n)
         init_count <= 0;
     else if (init_count != INIT_COUNT)
@@ -66,11 +66,13 @@ always @(posedge sclk or negedge srst_n) begin
         init_count <= init_count;
 end
 
-always @(posedge sclk or negedge srst_n) begin
+always @(posedge clk_out or negedge srst_n) begin
     if (!srst_n)
         valid_count <= 0;
     else if (flag_start && valid_count != 3)
         valid_count <= valid_count + 1'b1;
+    else if (ovalid)
+        valid_count <= 0;
     else
         valid_count <= valid_count;
 end
