@@ -69,3 +69,14 @@ AES主要有四种操作，轮密钥加（aes_add）,字节代换（aes_sbox）�
 | ovalid | output | 输出数据有效信号                                                   |
 | oid    | output | 输出数据对应id                                                     |
 | odata  | output | 输出数据                                                           |
+
+
+# 上板
+
+- 软件：Vivado 2022.2
+- FPGA：ZYNQ 7010
+- 顶层文件：**top.sv**
+- 调用IP：clock，ila
+- 时钟频率：100MHz（板载50MHz，使用MMCM倍频，如果不使用ila可以更高）
+
+![](./img/vivado_aes.png)
