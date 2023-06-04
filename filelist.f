@@ -7,4 +7,4 @@
 ./src/rtl/aes_sbox.sv
 
 // testbanch
-./src/sim/tb_aes.sv
+// ./src/sim/tb_aes.sv
